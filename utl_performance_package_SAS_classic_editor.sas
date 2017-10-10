@@ -15,33 +15,9 @@ Python functions and code can be alsi be executed by mouse keys.
 %inc "c:/oto/utl_perpac.sas";
 
 
-%macro cath /* cmd des="applies to sasuser,profile. List catalog entries in the log";
-   /* highlight
-         dmkeys.keys anf type cath on the classic editor command line
-         box.source  for a comment box
-         hdr.source for standard header
-      or for source entries
-         put an 'a'(for after) in the prefic area and type copy box on the command line
-*/
-   store;note;notesubmit '%catha;';
-   run;
-%mend cath;
-
-%macro catha;
-   filename clp clipbrd ;
-   data _null_;
-     infile clp;
-     input;
-     cmd=cats('filename _cat catalog "sasuser.profile.',compress(_infile_),
-     '";data _null_;infile _cat;input;putlog _infile_ $171. ;run;quit;');
-     putlog cmd;
-     call execute(cmd);
-   run;
-%mend catha;
-
 
 %macro sumv / cmd
-    des="highlight row of numeric variables in the classic editor and type sumh on command line";
+    des="highlight row of numeric variables and type sumh on command line for proc means using last dataset";
    store;note;notesubmit '%sumva;';
    run;
 %mend sumv;
@@ -920,6 +896,30 @@ filename __dm clear;
 %macro getFolder(pth)/des="datastep variable get folder name";
  left(reverse(left(scan(reverse(full_path),1,"/\"))))
 %mend getFolder;
+
+%macro cath /* cmd des="applies to sasuser,profile. List catalog entries in the log";
+   /* highlight
+         dmkeys.keys anf type cath on the classic editor command line
+         box.source  for a comment box
+         hdr.source for standard header
+      or for source entries
+         put an 'a'(for after) in the prefic area and type copy box on the command line
+*/
+   store;note;notesubmit '%catha;';
+   run;
+%mend cath;
+
+%macro catha;
+   filename clp clipbrd ;
+   data _null_;
+     infile clp;
+     input;
+     cmd=cats('filename _cat catalog "sasuser.profile.',compress(_infile_),
+     '";data _null_;infile _cat;input;putlog _infile_ $171. ;run;quit;');
+     putlog cmd;
+     call execute(cmd);
+   run;
+%mend catha;
 
 
 
