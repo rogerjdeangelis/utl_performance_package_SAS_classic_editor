@@ -897,7 +897,7 @@ filename __dm clear;
  left(reverse(left(scan(reverse(full_path),1,"/\"))))
 %mend getFolder;
 
-%macro cath /* cmd des="applies to sasuser,profile. List catalog entries in the log";
+%macro cath / cmd des="applies to sasuser,profile. List catalog entries in the log";
    /* highlight
          dmkeys.keys anf type cath on the classic editor command line
          box.source  for a comment box
